@@ -1,4 +1,4 @@
-import React, { useRef, useMemo } from 'react';
+import React, { useRef, useMemo, useEffect } from 'react';
 import { Canvas, useFrame } from '@react-three/fiber';
 import { Points, PointMaterial } from '@react-three/drei';
 import * as THREE from 'three';
@@ -17,10 +17,28 @@ const ParticleSwarm = () => {
     return positions;
   }, []);
 
+  const scrollVelocity = useRef(0);
+  const lastScrollY = useRef(0);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const currentScrollY = window.scrollY;
+      scrollVelocity.current = currentScrollY - lastScrollY.current;
+      lastScrollY.current = currentScrollY;
+    };
+    
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
   useFrame((_, delta) => {
     if (ref.current) {
-      ref.current.rotation.x -= delta / 10;
-      ref.current.rotation.y -= delta / 15;
+      // Base rotation + scroll velocity influence
+      ref.current.rotation.x -= (delta / 10) + (scrollVelocity.current * 0.0005);
+      ref.current.rotation.y -= (delta / 15) + (scrollVelocity.current * 0.0005);
+      
+      // Decay velocity
+      scrollVelocity.current *= 0.9;
     }
   });
 

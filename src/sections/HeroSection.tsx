@@ -2,6 +2,7 @@ import React from 'react';
 import { FadeIn } from '../components/FadeIn';
 import { Hero3DCore } from '../components/Hero3DCore';
 import { TechBadge } from '../components/TechBadge';
+import { Magnet } from '../components/Magnet';
 import { FileDown, ChevronRight, Mail } from 'lucide-react';
 
 export const HeroSection: React.FC = () => {
@@ -25,20 +26,26 @@ export const HeroSection: React.FC = () => {
           </FadeIn>
 
           <FadeIn delay={0.3} className="flex flex-wrap gap-4 mt-4">
-            <a href="#projects" className="group relative px-6 py-3 bg-[#00D9FF]/10 text-[#00D9FF] rounded-full overflow-hidden border border-[#00D9FF]/30 hover:bg-[#00D9FF]/20 transition-all flex items-center gap-2">
-              <span className="font-medium tracking-wide">View Projects</span>
-              <ChevronRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-            </a>
+            <Magnet padding={30} strength={0.3}>
+              <a href="#projects" className="group relative px-6 py-3 bg-[#00D9FF]/10 text-[#00D9FF] rounded-full overflow-hidden border border-[#00D9FF]/30 hover:bg-[#00D9FF]/20 transition-all flex items-center gap-2">
+                <span className="font-medium tracking-wide">View Projects</span>
+                <ChevronRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+              </a>
+            </Magnet>
             
-            <a href="#contact" className="px-6 py-3 bg-white/5 text-white rounded-full border border-white/10 hover:bg-white/10 transition-all flex items-center gap-2">
-              <Mail className="w-4 h-4" />
-              <span className="font-medium tracking-wide">Contact Me</span>
-            </a>
+            <Magnet padding={30} strength={0.3}>
+              <a href="#contact" className="px-6 py-3 bg-white/5 text-white rounded-full border border-white/10 hover:bg-white/10 transition-all flex items-center gap-2">
+                <Mail className="w-4 h-4" />
+                <span className="font-medium tracking-wide">Contact Me</span>
+              </a>
+            </Magnet>
             
-            <a href="#" className="px-6 py-3 text-white/70 hover:text-white transition-all flex items-center gap-2">
-              <FileDown className="w-4 h-4" />
-              <span className="font-medium tracking-wide">Resume Download</span>
-            </a>
+            <Magnet padding={30} strength={0.3}>
+              <a href="#" className="px-6 py-3 text-white/70 hover:text-white transition-all flex items-center gap-2">
+                <FileDown className="w-4 h-4" />
+                <span className="font-medium tracking-wide">Resume Download</span>
+              </a>
+            </Magnet>
           </FadeIn>
 
           <FadeIn delay={0.4} className="mt-8 flex flex-col gap-4">

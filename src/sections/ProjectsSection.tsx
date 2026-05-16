@@ -1,7 +1,8 @@
 import React, { useRef } from 'react';
-import { motion, useScroll, useTransform } from 'framer-motion';
+import { useScroll, useTransform } from 'framer-motion';
 import { FadeIn } from '../components/FadeIn';
 import { TechBadge } from '../components/TechBadge';
+import { GlassCard } from '../components/GlassCard';
 import { ExternalLink } from 'lucide-react';
 import { GithubIcon } from '../components/Icons';
 
@@ -72,9 +73,10 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, index, totalCards })
 
   return (
     <div ref={containerRef} className="h-[90vh] flex items-center justify-center sticky top-0" style={{ paddingTop: `${index * 30}px` }}>
-      <motion.div 
+      <GlassCard 
         style={{ scale }}
-        className="w-full max-w-5xl rounded-[30px] border border-white/10 bg-[#0B1120] p-8 md:p-12 relative transform-origin-top overflow-hidden group shadow-2xl"
+        className="w-full max-w-5xl rounded-[30px] border border-white/10 bg-[#0B1120]/80 p-8 md:p-12 relative transform-origin-top overflow-hidden group shadow-2xl"
+        glowColor={project.color + '40'}
       >
         {/* Glow effect */}
         <div 
@@ -136,7 +138,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, index, totalCards })
             </div>
           </div>
         </div>
-      </motion.div>
+      </GlassCard>
     </div>
   );
 };

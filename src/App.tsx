@@ -9,23 +9,27 @@ import { ServicesSection } from './sections/ServicesSection';
 import { CertificationsSection } from './sections/CertificationsSection';
 import { ContactSection } from './sections/ContactSection';
 
+import { SmoothScroll } from './components/SmoothScroll';
+
 function App() {
   return (
-    <div className="bg-[#050816] text-[#E6F1FF] min-h-screen selection:bg-[#00D9FF]/30 selection:text-white font-sans relative">
-      <CursorGlow />
-      <ParticleBackground />
-      
-      <main className="relative z-10 w-full flex flex-col">
-        <HeroSection />
-        <AboutSection />
-        <SkillsSection />
-        <ProjectsSection />
-        <ExperienceSection />
-        <ServicesSection />
-        <CertificationsSection />
-        <ContactSection />
-      </main>
-    </div>
+    <SmoothScroll>
+      <div className="bg-[#050816] text-[#E6F1FF] min-h-screen selection:bg-[#00D9FF]/30 selection:text-white font-sans relative">
+        <CursorGlow />
+        <ParticleBackground />
+        
+        <main className="relative z-10 w-full flex flex-col">
+          <HeroSection />
+          <AboutSection />
+          <SkillsSection />
+          <ProjectsSection />
+          <ExperienceSection />
+          <ServicesSection />
+          <CertificationsSection />
+          <ContactSection />
+        </main>
+      </div>
+    </SmoothScroll>
   );
 }
 

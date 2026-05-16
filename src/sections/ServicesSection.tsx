@@ -1,6 +1,7 @@
 import React from 'react';
 import { FadeIn } from '../components/FadeIn';
 import { GlassCard } from '../components/GlassCard';
+import { motion } from 'framer-motion';
 import { BrainCircuit, Eye, Bot, Code, LayoutTemplate, Cloud, Database, Palette } from 'lucide-react';
 
 const services = [
@@ -28,9 +29,13 @@ export const ServicesSection: React.FC = () => {
           {services.map((service, idx) => (
             <FadeIn key={idx} delay={idx * 0.1} y={20}>
               <GlassCard className="h-full flex flex-col items-center justify-center text-center gap-4 group p-6 cursor-pointer">
-                <div className="p-4 rounded-full bg-white/5 border border-white/10 group-hover:scale-110 transition-transform duration-300">
+                <motion.div 
+                  animate={{ y: [0, -10, 0] }}
+                  transition={{ duration: 4, repeat: Infinity, ease: "easeInOut", delay: idx * 0.2 }}
+                  className="p-4 rounded-full bg-white/5 border border-white/10 group-hover:scale-110 transition-transform duration-300"
+                >
                   {service.icon}
-                </div>
+                </motion.div>
                 <h3 className="text-sm md:text-base font-semibold text-white/90 group-hover:text-white">
                   {service.title}
                 </h3>

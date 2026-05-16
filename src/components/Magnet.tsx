@@ -1,25 +1,23 @@
 import React, { useRef, useState, useEffect } from 'react';
+import { motion } from 'framer-motion';
 
 interface MagnetProps {
   children: React.ReactNode;
   padding?: number;
   strength?: number;
-  activeTransition?: string;
-  inactiveTransition?: string;
   className?: string;
+  as?: any;
 }
 
 export const Magnet: React.FC<MagnetProps> = ({
   children,
-  padding = 150,
-  strength = 3,
-  activeTransition = 'transform 0.3s ease-out',
-  inactiveTransition = 'transform 0.6s ease-in-out',
-  className = ''
+  padding = 50,
+  strength = 0.5,
+  className = '',
+  as = 'div'
 }) => {
   const ref = useRef<HTMLDivElement>(null);
   const [position, setPosition] = useState({ x: 0, y: 0 });
-  const [isActive, setIsActive] = useState(false);
 
   useEffect(() => {
     const handleMouseMove = (e: MouseEvent) => {
@@ -35,13 +33,11 @@ export const Magnet: React.FC<MagnetProps> = ({
       const distance = Math.sqrt(distanceX * distanceX + distanceY * distanceY);
 
       if (distance < width / 2 + padding) {
-        setIsActive(true);
         setPosition({
-          x: distanceX / strength,
-          y: distanceY / strength
+          x: distanceX * strength,
+          y: distanceY * strength
         });
       } else {
-        setIsActive(false);
         setPosition({ x: 0, y: 0 });
       }
     };
@@ -50,17 +46,21 @@ export const Magnet: React.FC<MagnetProps> = ({
     return () => window.removeEventListener('mousemove', handleMouseMove);
   }, [padding, strength]);
 
+  const handleMouseLeave = () => {
+    setPosition({ x: 0, y: 0 });
+  };
+
+  const MotionComponent = motion.create(as);
+
   return (
-    <div
+    <MotionComponent
       ref={ref}
       className={className}
-      style={{
-        transform: `translate3d(${position.x}px, ${position.y}px, 0)`,
-        transition: isActive ? activeTransition : inactiveTransition,
-        willChange: 'transform'
-      }}
+      animate={{ x: position.x, y: position.y }}
+      transition={{ type: "spring", stiffness: 150, damping: 15, mass: 0.1 }}
+      onMouseLeave={handleMouseLeave}
     >
       {children}
-    </div>
+    </MotionComponent>
   );
 };

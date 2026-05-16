@@ -1,6 +1,7 @@
 import React from 'react';
 import { FadeIn } from '../components/FadeIn';
 import { GlassCard } from '../components/GlassCard';
+import { AITerminal } from '../components/AITerminal';
 import { Brain, Code2, Rocket, LineChart } from 'lucide-react';
 
 const journeyItems = [
@@ -40,23 +41,7 @@ export const AboutSection: React.FC = () => {
               </h2>
             </FadeIn>
             
-            <FadeIn delay={0.1}>
-              <p className="text-[#E6F1FF]/80 leading-relaxed text-lg">
-                Sarhan is a passionate AI/ML Engineer focused on building impactful intelligent systems and modern digital products.
-              </p>
-            </FadeIn>
-            
-            <FadeIn delay={0.2}>
-              <p className="text-[#E6F1FF]/60 leading-relaxed">
-                Currently pursuing BTech in Electronics & Computer Engineering while deeply exploring Machine Learning, Deep Learning, MLOps, Computer Vision, AI Automation, Full Stack Development, and Agentic AI Systems.
-              </p>
-            </FadeIn>
-            
-            <FadeIn delay={0.3}>
-              <p className="text-[#E6F1FF]/60 leading-relaxed">
-                He enjoys solving real-world problems using AI and creating futuristic experiences through design + engineering.
-              </p>
-            </FadeIn>
+            <AITerminal />
           </div>
 
           {/* RIGHT: Journey Cards */}
