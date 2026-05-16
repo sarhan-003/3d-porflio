@@ -1,62 +1,82 @@
 import React from 'react';
 import { FadeIn } from '../components/FadeIn';
-import { AnimatedText } from '../components/AnimatedText';
-import { ContactButton } from '../components/ContactButton';
+import { GlassCard } from '../components/GlassCard';
+import { Brain, Code2, Rocket, LineChart } from 'lucide-react';
+
+const journeyItems = [
+  {
+    icon: <Brain className="w-6 h-6 text-[#00D9FF]" />,
+    title: "AI/ML Learning Journey",
+    desc: "Deep diving into algorithms, neural networks, and computer vision to solve complex problems."
+  },
+  {
+    icon: <Code2 className="w-6 h-6 text-[#8B5CF6]" />,
+    title: "Full Stack Development",
+    desc: "Building scalable web applications, REST APIs, and integrating machine learning models."
+  },
+  {
+    icon: <Rocket className="w-6 h-6 text-[#22D3EE]" />,
+    title: "Startup Projects",
+    desc: "Developing MVP products and AI-powered platforms for modern business use cases."
+  },
+  {
+    icon: <LineChart className="w-6 h-6 text-[#00D9FF]" />,
+    title: "PR & Marketing Experience",
+    desc: "Understanding product growth, user acquisition, and Web3 gaming promotions."
+  }
+];
 
 export const AboutSection: React.FC = () => {
   return (
-    <section id="about" className="min-h-screen relative flex flex-col items-center justify-center px-5 sm:px-8 md:px-10 py-20 overflow-hidden">
-      {/* Decorative Images */}
-      <FadeIn delay={0.1} duration={0.9} x={-80} y={0} className="absolute top-[4%] left-[1%] sm:left-[2%] md:left-[4%] w-[120px] sm:w-[160px] md:w-[210px]">
-        <img 
-          src="https://shrug-person-78902957.figma.site/_components/v2/ebb2b8f25d8e24d5f0a5ca8af4c950de81aa2fd7/moon_icon.11395d36.png" 
-          alt="Moon Icon" 
-          className="w-full h-auto object-contain"
-        />
-      </FadeIn>
+    <section id="about" className="py-24 relative z-10">
+      <div className="max-w-7xl mx-auto px-6">
+        <div className="grid lg:grid-cols-2 gap-16 items-center">
+          
+          {/* LEFT: Text Content */}
+          <div className="flex flex-col gap-6">
+            <FadeIn>
+              <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight">
+                About <span className="text-gradient">Me</span>
+              </h2>
+            </FadeIn>
+            
+            <FadeIn delay={0.1}>
+              <p className="text-[#E6F1FF]/80 leading-relaxed text-lg">
+                Sarhan is a passionate AI/ML Engineer focused on building impactful intelligent systems and modern digital products.
+              </p>
+            </FadeIn>
+            
+            <FadeIn delay={0.2}>
+              <p className="text-[#E6F1FF]/60 leading-relaxed">
+                Currently pursuing BTech in Electronics & Computer Engineering while deeply exploring Machine Learning, Deep Learning, MLOps, Computer Vision, AI Automation, Full Stack Development, and Agentic AI Systems.
+              </p>
+            </FadeIn>
+            
+            <FadeIn delay={0.3}>
+              <p className="text-[#E6F1FF]/60 leading-relaxed">
+                He enjoys solving real-world problems using AI and creating futuristic experiences through design + engineering.
+              </p>
+            </FadeIn>
+          </div>
 
-      <FadeIn delay={0.25} duration={0.9} x={-80} y={0} className="absolute bottom-[8%] left-[3%] sm:left-[6%] md:left-[10%] w-[100px] sm:w-[140px] md:w-[180px]">
-        <img 
-          src="https://shrug-person-78902957.figma.site/_components/v2/ebb2b8f25d8e24d5f0a5ca8af4c950de81aa2fd7/p59_1.4659672e.png" 
-          alt="3D Object" 
-          className="w-full h-auto object-contain"
-        />
-      </FadeIn>
-
-      <FadeIn delay={0.15} duration={0.9} x={80} y={0} className="absolute top-[4%] right-[1%] sm:right-[2%] md:right-[4%] w-[120px] sm:w-[160px] md:w-[210px]">
-        <img 
-          src="https://shrug-person-78902957.figma.site/_components/v2/ebb2b8f25d8e24d5f0a5ca8af4c950de81aa2fd7/lego_icon-1.703bb594.png" 
-          alt="Lego Icon" 
-          className="w-full h-auto object-contain"
-        />
-      </FadeIn>
-
-      <FadeIn delay={0.3} duration={0.9} x={80} y={0} className="absolute bottom-[8%] right-[3%] sm:right-[6%] md:right-[10%] w-[130px] sm:w-[170px] md:w-[220px]">
-        <img 
-          src="https://shrug-person-78902957.figma.site/_components/v2/ebb2b8f25d8e24d5f0a5ca8af4c950de81aa2fd7/Group_134-1.2e04f3ce.png" 
-          alt="3D Group" 
-          className="w-full h-auto object-contain"
-        />
-      </FadeIn>
-
-      {/* Content */}
-      <div className="relative z-10 flex flex-col items-center max-w-[560px] mx-auto">
-        <FadeIn delay={0} y={40}>
-          <h2 className="hero-heading font-black uppercase leading-none tracking-tight text-center text-[clamp(3rem,12vw,160px)]">
-            About me
-          </h2>
-        </FadeIn>
-
-        <div className="mt-10 sm:mt-14 md:mt-16 w-full">
-          <AnimatedText 
-            text="With more than five years of experience in design, i focus on branding, web design, and user experience, i truly enjoy working with businesses that aim to stand out and present their best image. Let's build something incredible together!" 
-            className="font-medium text-center leading-relaxed text-[clamp(1rem,2vw,1.35rem)]"
-          />
+          {/* RIGHT: Journey Cards */}
+          <div className="grid sm:grid-cols-2 gap-6">
+            {journeyItems.map((item, idx) => (
+              <FadeIn key={idx} delay={0.2 + idx * 0.1} y={30}>
+                <GlassCard className="h-full flex flex-col gap-4 group">
+                  <div className="w-12 h-12 rounded-full bg-white/5 border border-white/10 flex items-center justify-center group-hover:scale-110 transition-transform">
+                    {item.icon}
+                  </div>
+                  <h3 className="text-lg font-semibold text-white">{item.title}</h3>
+                  <p className="text-sm text-[#E6F1FF]/50 leading-relaxed">
+                    {item.desc}
+                  </p>
+                </GlassCard>
+              </FadeIn>
+            ))}
+          </div>
+          
         </div>
-
-        <FadeIn delay={0.2} y={30} className="mt-16 sm:mt-20 md:mt-24">
-          <ContactButton />
-        </FadeIn>
       </div>
     </section>
   );
