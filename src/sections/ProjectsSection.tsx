@@ -72,73 +72,75 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, index, totalCards })
   const scale = useTransform(scrollYProgress, [0, 1], [1, targetScale]);
 
   return (
-    <div ref={containerRef} className="h-[90vh] flex items-center justify-center sticky top-0" style={{ paddingTop: `${index * 30}px` }}>
-      <GlassCard 
-        style={{ scale }}
-        className="w-full max-w-5xl rounded-[30px] border border-white/10 bg-[#0B1120]/80 p-8 md:p-12 relative transform-origin-top overflow-hidden group shadow-2xl"
-        glowColor={project.color + '40'}
-      >
-        {/* Glow effect */}
-        <div 
-          className="absolute -top-40 -right-40 w-80 h-80 rounded-full blur-[100px] opacity-20 transition-opacity duration-500 group-hover:opacity-40"
-          style={{ backgroundColor: project.color }}
-        />
+    <div ref={containerRef} className="relative">
+      <div className="h-[90vh] flex items-center justify-center sticky top-0" style={{ paddingTop: `${index * 30}px` }}>
+        <GlassCard 
+          style={{ scale }}
+          className="w-full max-w-5xl rounded-[30px] border border-white/10 bg-[#0B1120]/80 p-8 md:p-12 relative transform-origin-top overflow-hidden group shadow-2xl"
+          glowColor={project.color + '40'}
+        >
+          {/* Glow effect */}
+          <div 
+            className="absolute -top-40 -right-40 w-80 h-80 rounded-full blur-[100px] opacity-20 transition-opacity duration-500 group-hover:opacity-40"
+            style={{ backgroundColor: project.color }}
+          />
 
-        <div className="grid md:grid-cols-2 gap-10 relative z-10">
-          <div className="flex flex-col gap-6">
-            <div className="flex items-center gap-4">
-              <span className="text-4xl font-bold opacity-30 font-accent" style={{ color: project.color }}>
-                {project.id}
-              </span>
-              <span className="px-3 py-1 rounded-full border border-white/10 text-xs font-medium uppercase tracking-wider text-[#E6F1FF]/60">
-                {project.category}
-              </span>
+          <div className="grid md:grid-cols-2 gap-10 relative z-10">
+            <div className="flex flex-col gap-6">
+              <div className="flex items-center gap-4">
+                <span className="text-4xl font-bold opacity-30 font-accent" style={{ color: project.color }}>
+                  {project.id}
+                </span>
+                <span className="px-3 py-1 rounded-full border border-white/10 text-xs font-medium uppercase tracking-wider text-[#E6F1FF]/60">
+                  {project.category}
+                </span>
+              </div>
+
+              <h3 className="text-3xl md:text-4xl font-bold text-white">
+                {project.title}
+              </h3>
+              
+              <p className="text-[#E6F1FF]/70 leading-relaxed text-lg">
+                {project.desc}
+              </p>
+
+              <div className="flex flex-wrap gap-2 mt-2">
+                {project.tech.map(t => (
+                  <TechBadge key={t} label={t} />
+                ))}
+              </div>
+              
+              <div className="flex gap-4 mt-6">
+                <a href="#" className="flex items-center gap-2 px-6 py-3 rounded-full bg-white text-black font-medium hover:bg-white/90 transition-colors">
+                  <ExternalLink className="w-4 h-4" />
+                  Live Demo
+                </a>
+                <a href="#" className="flex items-center gap-2 px-6 py-3 rounded-full border border-white/20 text-white hover:bg-white/10 transition-colors">
+                  <GithubIcon className="w-4 h-4" />
+                  Code
+                </a>
+              </div>
             </div>
 
-            <h3 className="text-3xl md:text-4xl font-bold text-white">
-              {project.title}
-            </h3>
-            
-            <p className="text-[#E6F1FF]/70 leading-relaxed text-lg">
-              {project.desc}
-            </p>
-
-            <div className="flex flex-wrap gap-2 mt-2">
-              {project.tech.map(t => (
-                <TechBadge key={t} label={t} />
-              ))}
-            </div>
-            
-            <div className="flex gap-4 mt-6">
-              <a href="#" className="flex items-center gap-2 px-6 py-3 rounded-full bg-white text-black font-medium hover:bg-white/90 transition-colors">
-                <ExternalLink className="w-4 h-4" />
-                Live Demo
-              </a>
-              <a href="#" className="flex items-center gap-2 px-6 py-3 rounded-full border border-white/20 text-white hover:bg-white/10 transition-colors">
-                <GithubIcon className="w-4 h-4" />
-                Code
-              </a>
+            <div className="flex flex-col gap-4">
+              <h4 className="text-lg font-semibold text-white/90 border-b border-white/10 pb-2">Key Features</h4>
+              <ul className="flex flex-col gap-3">
+                {project.features.map((feature, i) => (
+                  <li key={i} className="flex items-start gap-3 text-[#E6F1FF]/70">
+                    <span className="mt-1.5 w-1.5 h-1.5 rounded-full" style={{ backgroundColor: project.color }} />
+                    {feature}
+                  </li>
+                ))}
+              </ul>
+              
+              {/* Placeholder for Parallax Image if available in future */}
+              <div className="mt-auto h-40 rounded-xl bg-gradient-to-br from-white/5 to-white/0 border border-white/10 flex items-center justify-center overflow-hidden relative group-hover:border-white/20 transition-colors">
+                <span className="text-white/20 font-medium tracking-widest uppercase">Project Preview</span>
+              </div>
             </div>
           </div>
-
-          <div className="flex flex-col gap-4">
-            <h4 className="text-lg font-semibold text-white/90 border-b border-white/10 pb-2">Key Features</h4>
-            <ul className="flex flex-col gap-3">
-              {project.features.map((feature, i) => (
-                <li key={i} className="flex items-start gap-3 text-[#E6F1FF]/70">
-                  <span className="mt-1.5 w-1.5 h-1.5 rounded-full" style={{ backgroundColor: project.color }} />
-                  {feature}
-                </li>
-              ))}
-            </ul>
-            
-            {/* Placeholder for Parallax Image if available in future */}
-            <div className="mt-auto h-40 rounded-xl bg-gradient-to-br from-white/5 to-white/0 border border-white/10 flex items-center justify-center overflow-hidden relative group-hover:border-white/20 transition-colors">
-              <span className="text-white/20 font-medium tracking-widest uppercase">Project Preview</span>
-            </div>
-          </div>
-        </div>
-      </GlassCard>
+        </GlassCard>
+      </div>
     </div>
   );
 };
