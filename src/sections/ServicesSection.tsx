@@ -1,67 +1,43 @@
 import React from 'react';
 import { FadeIn } from '../components/FadeIn';
+import { GlassCard } from '../components/GlassCard';
+import { BrainCircuit, Eye, Bot, Code, LayoutTemplate, Cloud, Database, Palette } from 'lucide-react';
 
 const services = [
-  {
-    id: '01',
-    name: '3D Modeling',
-    description: 'Creation of detailed objects, characters, or environments tailored to specific client needs, ideal for games, products, and visualizations.'
-  },
-  {
-    id: '02',
-    name: 'Rendering',
-    description: 'High-quality, photorealistic renders that showcase designs with custom lighting, textures, and materials to bring concepts to life.'
-  },
-  {
-    id: '03',
-    name: 'Motion Design',
-    description: 'Dynamic animations and motion graphics that add energy and storytelling to brands, products, and digital experiences.'
-  },
-  {
-    id: '04',
-    name: 'Branding',
-    description: 'Crafting cohesive visual identities -- from logos to full brand systems -- that communicate a clear and memorable presence.'
-  },
-  {
-    id: '05',
-    name: 'Web Design',
-    description: 'Designing clean, modern, and conversion-focused websites with attention to layout, typography, and user experience.'
-  }
+  { icon: <BrainCircuit className="w-8 h-8 text-[#00D9FF]" />, title: "AI/ML Solutions" },
+  { icon: <Eye className="w-8 h-8 text-[#8B5CF6]" />, title: "Computer Vision Apps" },
+  { icon: <Bot className="w-8 h-8 text-[#22D3EE]" />, title: "AI Automation" },
+  { icon: <Code className="w-8 h-8 text-[#00D9FF]" />, title: "Full Stack Development" },
+  { icon: <LayoutTemplate className="w-8 h-8 text-[#8B5CF6]" />, title: "Portfolio Websites" },
+  { icon: <Cloud className="w-8 h-8 text-[#22D3EE]" />, title: "SaaS Platforms" },
+  { icon: <Database className="w-8 h-8 text-[#00D9FF]" />, title: "ERP Systems" },
+  { icon: <Palette className="w-8 h-8 text-[#8B5CF6]" />, title: "UI/UX Design" }
 ];
 
 export const ServicesSection: React.FC = () => {
   return (
-    <section id="services" className="bg-white rounded-t-[40px] sm:rounded-t-[50px] md:rounded-t-[60px] px-5 sm:px-8 md:px-10 py-20 sm:py-24 md:py-32 relative z-20">
-      <FadeIn delay={0} y={30}>
-        <h2 className="text-[#0C0C0C] font-black uppercase text-center mb-16 sm:mb-20 md:mb-28 text-[clamp(3rem,12vw,160px)] leading-none">
-          Services
-        </h2>
-      </FadeIn>
+    <section id="services" className="py-24 relative z-10">
+      <div className="max-w-7xl mx-auto px-6">
+        <FadeIn className="mb-16 text-center">
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight">
+            What I <span className="text-gradient">Do</span>
+          </h2>
+        </FadeIn>
 
-      <div className="max-w-5xl mx-auto flex flex-col">
-        {services.map((service, index) => (
-          <FadeIn 
-            key={service.id} 
-            delay={index * 0.1} 
-            y={20}
-            className="flex flex-col sm:flex-row items-start sm:items-center py-8 sm:py-10 md:py-12 border-b border-[rgba(12,12,12,0.15)] first:border-t"
-          >
-            <div className="w-full sm:w-1/3 mb-4 sm:mb-0">
-              <span className="text-[#0C0C0C] font-black leading-none text-[clamp(3rem,10vw,140px)]">
-                {service.id}
-              </span>
-            </div>
-            
-            <div className="w-full sm:w-2/3 flex flex-col gap-3">
-              <h3 className="text-[#0C0C0C] font-medium uppercase text-[clamp(1rem,2.2vw,2.1rem)]">
-                {service.name}
-              </h3>
-              <p className="text-[#0C0C0C] font-light leading-relaxed max-w-2xl opacity-60 text-[clamp(0.85rem,1.6vw,1.25rem)]">
-                {service.description}
-              </p>
-            </div>
-          </FadeIn>
-        ))}
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+          {services.map((service, idx) => (
+            <FadeIn key={idx} delay={idx * 0.1} y={20}>
+              <GlassCard className="h-full flex flex-col items-center justify-center text-center gap-4 group p-6 cursor-pointer">
+                <div className="p-4 rounded-full bg-white/5 border border-white/10 group-hover:scale-110 transition-transform duration-300">
+                  {service.icon}
+                </div>
+                <h3 className="text-sm md:text-base font-semibold text-white/90 group-hover:text-white">
+                  {service.title}
+                </h3>
+              </GlassCard>
+            </FadeIn>
+          ))}
+        </div>
       </div>
     </section>
   );

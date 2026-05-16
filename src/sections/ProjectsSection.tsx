@@ -1,32 +1,55 @@
 import React, { useRef } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
-import { LiveProjectButton } from '../components/LiveProjectButton';
 import { FadeIn } from '../components/FadeIn';
+import { TechBadge } from '../components/TechBadge';
+import { ExternalLink } from 'lucide-react';
+import { GithubIcon } from '../components/Icons';
 
 const projects = [
   {
-    id: '01',
-    name: 'Nextlevel Studio',
-    category: 'Client',
-    col1Img1: 'https://images.higgs.ai/?default=1&output=webp&url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_38xzZboKViGWJOttwIXH07lWA1P%2Fhf_20260412_055344_5eff02e0-87a5-41ce-b64f-eb08da8f33db.png&w=1280&q=85',
-    col1Img2: 'https://images.higgs.ai/?default=1&output=webp&url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_38xzZboKViGWJOttwIXH07lWA1P%2Fhf_20260412_055431_11d841fd-8b41-46a5-82e4-b04f2407a7d8.png&w=1280&q=85',
-    col2Img: 'https://images.higgs.ai/?default=1&output=webp&url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_38xzZboKViGWJOttwIXH07lWA1P%2Fhf_20260412_055451_e317bf2d-28d4-48cc-86b0-6f72f25b6327.png&w=1280&q=85'
+    id: "01",
+    title: "Driver Drowsiness Detection System",
+    category: "Computer Vision",
+    desc: "Real-time driver monitoring system detecting eye closure and fatigue using computer vision techniques.",
+    tech: ["Python", "OpenCV", "Dlib", "Computer Vision"],
+    features: ["Live webcam monitoring", "Eye aspect ratio detection", "Alarm triggering", "Real-time processing"],
+    color: "#00D9FF"
   },
   {
-    id: '02',
-    name: 'Aura Brand Identity',
-    category: 'Personal',
-    col1Img1: 'https://images.higgs.ai/?default=1&output=webp&url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_38xzZboKViGWJOttwIXH07lWA1P%2Fhf_20260412_055654_911201c5-36d9-4bc6-bac7-331adfce159f.png&w=1280&q=85',
-    col1Img2: 'https://images.higgs.ai/?default=1&output=webp&url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_38xzZboKViGWJOttwIXH07lWA1P%2Fhf_20260412_055723_5ceda0b8-d9c2-4665-b2e3-83ba19ba76d1.png&w=1280&q=85',
-    col2Img: 'https://images.higgs.ai/?default=1&output=webp&url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_38xzZboKViGWJOttwIXH07lWA1P%2Fhf_20260412_055753_adc5dcbd-a8e6-49c0-b43a-9b030d835cea.png&w=1280&q=85'
+    id: "02",
+    title: "AI Recommendation System",
+    category: "Machine Learning",
+    desc: "Student recommendation system using machine learning algorithms and dataset analysis.",
+    tech: ["Python", "Scikit-learn", "Pandas", "NumPy"],
+    features: ["Intelligent recommendations", "CSV/PDF data extraction", "Dataset preprocessing", "Prediction models"],
+    color: "#8B5CF6"
   },
   {
-    id: '03',
-    name: 'Solaris Digital',
-    category: 'Client',
-    col1Img1: 'https://images.higgs.ai/?default=1&output=webp&url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_38xzZboKViGWJOttwIXH07lWA1P%2Fhf_20260412_055759_963cfb0b-4bd1-4b0f-9d0a-09bd6cf95b2f.png&w=1280&q=85',
-    col1Img2: 'https://images.higgs.ai/?default=1&output=webp&url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_38xzZboKViGWJOttwIXH07lWA1P%2Fhf_20260412_060108_438f781a-9846-4dcc-89ab-c4e6cb830f5b.png&w=1280&q=85',
-    col2Img: 'https://images.higgs.ai/?default=1&output=webp&url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_38xzZboKViGWJOttwIXH07lWA1P%2Fhf_20260412_055818_9d062121-ad7e-46b9-999a-1a6a692ef1ee.png&w=1280&q=85'
+    id: "03",
+    title: "AI Automation Workflow System",
+    category: "AI & Automation",
+    desc: "Automation workflows integrating AI agents and APIs for productivity and business operations.",
+    tech: ["Python", "FastAPI", "Agentic AI", "API Integrations"],
+    features: ["AI-powered automation", "Workflow orchestration", "API integrations", "Smart task handling"],
+    color: "#22D3EE"
+  },
+  {
+    id: "04",
+    title: "Rotary Club Management Platform",
+    category: "Full Stack Development",
+    desc: "Modern event management and NGO digital platform with multilingual support.",
+    tech: ["React", "Node.js", "MongoDB", "Tailwind CSS"],
+    features: ["Event management", "Expense tracking", "Member management", "Multi-language support"],
+    color: "#00D9FF"
+  },
+  {
+    id: "05",
+    title: "ERP & Business Management System",
+    category: "Enterprise Software",
+    desc: "Business ERP platform for revenue tracking, expenses, notifications, and client management.",
+    tech: ["React", "TypeScript", "Express", "PostgreSQL"],
+    features: ["Admin dashboard", "Analytics", "Revenue management", "Mobile app integration"],
+    color: "#8B5CF6"
   }
 ];
 
@@ -44,44 +67,73 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, index, totalCards })
     offset: ['start start', 'end start']
   });
 
-  const targetScale = 1 - (totalCards - 1 - index) * 0.03;
+  const targetScale = 1 - (totalCards - 1 - index) * 0.05;
   const scale = useTransform(scrollYProgress, [0, 1], [1, targetScale]);
 
   return (
-    <div ref={containerRef} className="h-[85vh] flex justify-center sticky top-0" style={{ paddingTop: `${(index + 1) * 28}px` }}>
+    <div ref={containerRef} className="h-[90vh] flex items-center justify-center sticky top-0" style={{ paddingTop: `${index * 30}px` }}>
       <motion.div 
         style={{ scale }}
-        className="w-full max-w-6xl rounded-[40px] sm:rounded-[50px] md:rounded-[60px] border-2 border-[#D7E2EA] bg-[#0C0C0C] p-4 sm:p-6 md:p-8 flex flex-col gap-6 relative transform-origin-top"
+        className="w-full max-w-5xl rounded-[30px] border border-white/10 bg-[#0B1120] p-8 md:p-12 relative transform-origin-top overflow-hidden group shadow-2xl"
       >
-        <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
-          <div className="flex items-center gap-4 sm:gap-6">
-            <span className="text-[#D7E2EA] font-black leading-none text-[clamp(3rem,8vw,100px)]">
-              {project.id}
-            </span>
-            <div className="flex flex-col">
-              <span className="text-[#D7E2EA]/60 uppercase tracking-widest text-sm sm:text-base font-medium">
+        {/* Glow effect */}
+        <div 
+          className="absolute -top-40 -right-40 w-80 h-80 rounded-full blur-[100px] opacity-20 transition-opacity duration-500 group-hover:opacity-40"
+          style={{ backgroundColor: project.color }}
+        />
+
+        <div className="grid md:grid-cols-2 gap-10 relative z-10">
+          <div className="flex flex-col gap-6">
+            <div className="flex items-center gap-4">
+              <span className="text-4xl font-bold opacity-30 font-accent" style={{ color: project.color }}>
+                {project.id}
+              </span>
+              <span className="px-3 py-1 rounded-full border border-white/10 text-xs font-medium uppercase tracking-wider text-[#E6F1FF]/60">
                 {project.category}
               </span>
-              <h3 className="text-[#D7E2EA] font-semibold uppercase text-xl sm:text-2xl md:text-3xl tracking-wide">
-                {project.name}
-              </h3>
             </div>
-          </div>
-          <LiveProjectButton />
-        </div>
 
-        <div className="flex flex-col md:flex-row gap-4 h-full min-h-0">
-          <div className="flex flex-col w-full md:w-[40%] gap-4">
-            <div className="w-full h-[clamp(130px,16vw,230px)] rounded-[40px] sm:rounded-[50px] md:rounded-[60px] overflow-hidden">
-              <img src={project.col1Img1} alt="" className="w-full h-full object-cover" />
+            <h3 className="text-3xl md:text-4xl font-bold text-white">
+              {project.title}
+            </h3>
+            
+            <p className="text-[#E6F1FF]/70 leading-relaxed text-lg">
+              {project.desc}
+            </p>
+
+            <div className="flex flex-wrap gap-2 mt-2">
+              {project.tech.map(t => (
+                <TechBadge key={t} label={t} />
+              ))}
             </div>
-            <div className="w-full h-[clamp(160px,22vw,340px)] rounded-[40px] sm:rounded-[50px] md:rounded-[60px] overflow-hidden flex-1">
-              <img src={project.col1Img2} alt="" className="w-full h-full object-cover" />
+            
+            <div className="flex gap-4 mt-6">
+              <a href="#" className="flex items-center gap-2 px-6 py-3 rounded-full bg-white text-black font-medium hover:bg-white/90 transition-colors">
+                <ExternalLink className="w-4 h-4" />
+                Live Demo
+              </a>
+              <a href="#" className="flex items-center gap-2 px-6 py-3 rounded-full border border-white/20 text-white hover:bg-white/10 transition-colors">
+                <GithubIcon className="w-4 h-4" />
+                Code
+              </a>
             </div>
           </div>
-          
-          <div className="w-full md:w-[60%] h-full min-h-[300px] rounded-[40px] sm:rounded-[50px] md:rounded-[60px] overflow-hidden">
-            <img src={project.col2Img} alt="" className="w-full h-full object-cover" />
+
+          <div className="flex flex-col gap-4">
+            <h4 className="text-lg font-semibold text-white/90 border-b border-white/10 pb-2">Key Features</h4>
+            <ul className="flex flex-col gap-3">
+              {project.features.map((feature, i) => (
+                <li key={i} className="flex items-start gap-3 text-[#E6F1FF]/70">
+                  <span className="mt-1.5 w-1.5 h-1.5 rounded-full" style={{ backgroundColor: project.color }} />
+                  {feature}
+                </li>
+              ))}
+            </ul>
+            
+            {/* Placeholder for Parallax Image if available in future */}
+            <div className="mt-auto h-40 rounded-xl bg-gradient-to-br from-white/5 to-white/0 border border-white/10 flex items-center justify-center overflow-hidden relative group-hover:border-white/20 transition-colors">
+              <span className="text-white/20 font-medium tracking-widest uppercase">Project Preview</span>
+            </div>
           </div>
         </div>
       </motion.div>
@@ -91,22 +143,24 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, index, totalCards })
 
 export const ProjectsSection: React.FC = () => {
   return (
-    <section id="projects" className="bg-[#0C0C0C] rounded-t-[40px] sm:rounded-t-[50px] md:rounded-t-[60px] -mt-10 sm:-mt-12 md:-mt-14 z-30 relative px-5 sm:px-8 md:px-10 py-20 sm:py-24 md:py-32">
-      <FadeIn delay={0} y={30}>
-        <h2 className="hero-heading font-black uppercase text-center mb-16 sm:mb-20 md:mb-28 text-[clamp(3rem,12vw,160px)] leading-none tracking-tight">
-          Project
-        </h2>
-      </FadeIn>
+    <section id="projects" className="py-24 relative z-10">
+      <div className="max-w-7xl mx-auto px-6">
+        <FadeIn className="mb-10 text-center">
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight">
+            Featured <span className="text-gradient">Projects</span>
+          </h2>
+        </FadeIn>
 
-      <div className="max-w-6xl mx-auto relative pb-20">
-        {projects.map((project, index) => (
-          <ProjectCard 
-            key={project.id} 
-            project={project} 
-            index={index} 
-            totalCards={projects.length} 
-          />
-        ))}
+        <div className="relative pb-24">
+          {projects.map((project, index) => (
+            <ProjectCard 
+              key={project.id} 
+              project={project} 
+              index={index} 
+              totalCards={projects.length} 
+            />
+          ))}
+        </div>
       </div>
     </section>
   );
