@@ -1,8 +1,16 @@
 @import "tailwindcss";
 
 @theme {
-  --font-sans: 'Kanit', sans-serif;
-  --color-dark-bg: #0C0C0C;
+  --font-sans: 'Inter', sans-serif;
+  --font-heading: 'Space Grotesk', sans-serif;
+  --font-accent: 'Kanit', sans-serif;
+  
+  --color-primary: #050816;
+  --color-secondary: #0B1120;
+  
+  --color-electric-blue: #00D9FF;
+  --color-purple: #8B5CF6;
+  --color-neon-cyan: #22D3EE;
 }
 
 * {
@@ -12,15 +20,44 @@
 }
 
 html, body, #root {
-  background-color: #0C0C0C;
-  color: #D7E2EA;
+  background-color: #050816;
+  color: #E6F1FF;
+  font-family: 'Inter', sans-serif;
+  overflow-x: clip;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Space Grotesk', sans-serif;
+}
+
+.font-accent {
   font-family: 'Kanit', sans-serif;
 }
 
-.hero-heading {
-  background: linear-gradient(180deg, #646973 0%, #BBCCD7 100%);
+.text-gradient {
+  background: linear-gradient(90deg, #00D9FF 0%, #8B5CF6 50%, #22D3EE 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
   color: transparent;
+}
+
+.glass-card {
+  background: rgba(11, 17, 32, 0.4);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+}
+
+.glass-card:hover {
+  border: 1px solid rgba(0, 217, 255, 0.3);
+  box-shadow: 0 4px 30px rgba(0, 217, 255, 0.1);
+}
+
+.hide-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.hide-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
 }

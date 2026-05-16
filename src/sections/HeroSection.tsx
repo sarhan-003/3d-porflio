@@ -1,52 +1,77 @@
 import React from 'react';
 import { FadeIn } from '../components/FadeIn';
-import { Magnet } from '../components/Magnet';
-import { ContactButton } from '../components/ContactButton';
+import { Hero3DCore } from '../components/Hero3DCore';
+import { TechBadge } from '../components/TechBadge';
+import { FileDown, ChevronRight, Mail } from 'lucide-react';
 
 export const HeroSection: React.FC = () => {
   return (
-    <section className="h-screen flex flex-col overflow-x-clip relative">
-      <FadeIn delay={0} y={-20} as="nav" className="flex justify-between px-6 md:px-10 pt-6 md:pt-8 relative z-20">
-        {['About', 'Price', 'Projects', 'Contact'].map((item) => (
-          <a
-            key={item}
-            href={`#${item.toLowerCase()}`}
-            className="text-[#D7E2EA] font-medium uppercase tracking-wider text-sm md:text-lg lg:text-[1.4rem] hover:opacity-70 transition-opacity duration-200"
-          >
-            {item}
-          </a>
-        ))}
-      </FadeIn>
-
-      <div className="flex-1 flex flex-col justify-center relative z-20 overflow-hidden">
-        <FadeIn delay={0.15} y={40} className="w-full flex justify-center mt-6 sm:mt-4 md:-mt-5">
-          <h1 className="hero-heading font-black uppercase tracking-tight leading-none whitespace-nowrap text-[14vw] sm:text-[15vw] md:text-[16vw] lg:text-[17.5vw]">
-            Hi, i&apos;m jack
-          </h1>
-        </FadeIn>
-      </div>
-
-      <div className="flex justify-between items-end pb-7 sm:pb-8 md:pb-10 px-6 md:px-10 relative z-20">
-        <FadeIn delay={0.35} y={20}>
-          <p className="text-[#D7E2EA] font-light uppercase tracking-wide leading-snug text-[clamp(0.75rem,1.4vw,1.5rem)] max-w-[160px] sm:max-w-[220px] md:max-w-[260px]">
-            a 3d creator driven by crafting striking and unforgettable projects
-          </p>
-        </FadeIn>
+    <section id="hero" className="min-h-screen relative flex items-center pt-20 pb-10 z-10">
+      <div className="max-w-7xl mx-auto px-6 w-full grid lg:grid-cols-2 gap-12 items-center">
         
-        <FadeIn delay={0.5} y={20}>
-          <ContactButton />
-        </FadeIn>
-      </div>
+        {/* LEFT SIDE */}
+        <div className="flex flex-col gap-6 relative z-20">
+          <FadeIn delay={0.1}>
+            <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold leading-tight">
+              Hi, I'm Sarhan<br />
+              <span className="text-gradient">AI/ML Engineer & Builder</span>
+            </h1>
+          </FadeIn>
+          
+          <FadeIn delay={0.2}>
+            <p className="text-[#E6F1FF]/70 text-lg md:text-xl max-w-xl font-light leading-relaxed">
+              I build intelligent systems, machine learning applications, AI automation workflows, and futuristic digital experiences.
+            </p>
+          </FadeIn>
 
-      <FadeIn delay={0.6} y={30} className="absolute left-1/2 -translate-x-1/2 z-10 w-[280px] sm:w-[360px] md:w-[440px] lg:w-[520px] top-1/2 -translate-y-1/2 sm:top-auto sm:translate-y-0 sm:bottom-0">
-        <Magnet padding={150} strength={3}>
-          <img 
-            src="https://shrug-person-78902957.figma.site/_components/v2/d24c01ad3a56fc65e942a1f501eb73db42d7cf9a/Rectangle_40443.81459862.png" 
-            alt="Jack Portrait" 
-            className="w-full h-auto object-contain pointer-events-none"
-          />
-        </Magnet>
-      </FadeIn>
+          <FadeIn delay={0.3} className="flex flex-wrap gap-4 mt-4">
+            <a href="#projects" className="group relative px-6 py-3 bg-[#00D9FF]/10 text-[#00D9FF] rounded-full overflow-hidden border border-[#00D9FF]/30 hover:bg-[#00D9FF]/20 transition-all flex items-center gap-2">
+              <span className="font-medium tracking-wide">View Projects</span>
+              <ChevronRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+            </a>
+            
+            <a href="#contact" className="px-6 py-3 bg-white/5 text-white rounded-full border border-white/10 hover:bg-white/10 transition-all flex items-center gap-2">
+              <Mail className="w-4 h-4" />
+              <span className="font-medium tracking-wide">Contact Me</span>
+            </a>
+            
+            <a href="#" className="px-6 py-3 text-white/70 hover:text-white transition-all flex items-center gap-2">
+              <FileDown className="w-4 h-4" />
+              <span className="font-medium tracking-wide">Resume Download</span>
+            </a>
+          </FadeIn>
+
+          <FadeIn delay={0.4} className="mt-8 flex flex-col gap-4">
+            <h3 className="text-sm font-accent uppercase tracking-widest text-[#E6F1FF]/50">Core Focus</h3>
+            <div className="flex flex-wrap gap-2">
+              <TechBadge label="Machine Learning" />
+              <TechBadge label="Computer Vision" />
+              <TechBadge label="MLOps" />
+              <TechBadge label="Deep Learning" />
+              <TechBadge label="Generative AI" />
+              <TechBadge label="Full Stack AI" />
+            </div>
+          </FadeIn>
+        </div>
+
+        {/* RIGHT SIDE */}
+        <div className="relative z-10 hidden md:block">
+          <FadeIn delay={0.3}>
+            <Hero3DCore />
+          </FadeIn>
+          
+          {/* Floating Stats Cards */}
+          <FadeIn delay={0.6} x={50} y={-50} className="absolute top-[10%] right-0 glass-card px-4 py-3 rounded-xl border border-white/10 backdrop-blur-md">
+            <p className="text-xs text-[#E6F1FF]/60 font-accent uppercase tracking-wider mb-1">Status</p>
+            <p className="text-sm font-medium text-[#00D9FF]">Open to AI Internships</p>
+          </FadeIn>
+          
+          <FadeIn delay={0.7} x={-50} y={50} className="absolute bottom-[20%] left-0 glass-card px-4 py-3 rounded-xl border border-white/10 backdrop-blur-md">
+            <p className="text-xs text-[#E6F1FF]/60 font-accent uppercase tracking-wider mb-1">Education</p>
+            <p className="text-sm font-medium text-[#8B5CF6]">BTech ECE Student</p>
+          </FadeIn>
+        </div>
+      </div>
     </section>
   );
 };
