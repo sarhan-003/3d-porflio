@@ -1,5 +1,5 @@
 import React, { useRef, useState } from 'react';
-import { motion, useMotionValue, useSpring, useTransform } from 'framer-motion';
+import { motion, useMotionValue, useSpring, useTransform, useMotionTemplate } from 'framer-motion';
 import type { HTMLMotionProps } from 'framer-motion';
 
 interface GlassCardProps extends HTMLMotionProps<"div"> {
@@ -24,6 +24,10 @@ export const GlassCard: React.FC<GlassCardProps> = ({
   
   const rotateX = useTransform(mouseYSpring, [-0.5, 0.5], ["10deg", "-10deg"]);
   const rotateY = useTransform(mouseXSpring, [-0.5, 0.5], ["-10deg", "10deg"]);
+  
+  const glareX = useTransform(mouseXSpring, [-0.5, 0.5], [0, 100]);
+  const glareY = useTransform(mouseYSpring, [-0.5, 0.5], [0, 100]);
+  const background = useMotionTemplate`radial-gradient(circle at ${glareX}% ${glareY}%, rgba(255,255,255,0.2) 0%, transparent 60%)`;
   
   const [isHovering, setIsHovering] = useState(false);
 
@@ -78,14 +82,13 @@ export const GlassCard: React.FC<GlassCardProps> = ({
       </div>
       
       {/* Glare effect */}
-      {isHovering && (
-        <motion.div 
-          className="absolute inset-0 pointer-events-none rounded-2xl z-20 mix-blend-overlay"
-          style={{
-            background: `radial-gradient(circle at ${useTransform(mouseXSpring, [-0.5, 0.5], [0, 100])}% ${useTransform(mouseYSpring, [-0.5, 0.5], [0, 100])}%, rgba(255,255,255,0.2) 0%, transparent 60%)`
-          }}
-        />
-      )}
+      <motion.div 
+        className="absolute inset-0 pointer-events-none rounded-2xl z-20 mix-blend-overlay transition-opacity duration-300"
+        style={{
+          background,
+          opacity: isHovering ? 1 : 0
+        }}
+      />
     </motion.div>
   );
 };
