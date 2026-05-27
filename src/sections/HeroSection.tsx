@@ -1,9 +1,9 @@
 import React from 'react';
 import { FadeIn } from '../components/FadeIn';
-import { Hero3DCore } from '../components/Hero3DCore';
 import { TechBadge } from '../components/TechBadge';
 import { Magnet } from '../components/Magnet';
 import { FileDown, ChevronRight, Mail } from 'lucide-react';
+import { JarvisHUD } from '../components/JarvisHUD';
 
 export const HeroSection: React.FC = () => {
   return (
@@ -41,7 +41,7 @@ export const HeroSection: React.FC = () => {
             </Magnet>
             
             <Magnet padding={30} strength={0.3}>
-              <a href="#" className="px-6 py-3 text-white/70 hover:text-white transition-all flex items-center gap-2">
+              <a href="/Sarhan_Bakarman_Resume.pdf" download="Sarhan_Bakarman_Resume.pdf" className="px-6 py-3 text-white/70 hover:text-white transition-all flex items-center gap-2">
                 <FileDown className="w-4 h-4" />
                 <span className="font-medium tracking-wide">Resume Download</span>
               </a>
@@ -62,9 +62,9 @@ export const HeroSection: React.FC = () => {
         </div>
 
         {/* RIGHT SIDE */}
-        <div className="relative z-10 hidden md:block">
-          <FadeIn delay={0.3}>
-            <Hero3DCore />
+        <div className="relative z-10 hidden md:flex items-center justify-center">
+          <FadeIn delay={0.3} className="relative w-full flex items-center justify-center min-h-[400px]">
+            <JarvisHUD size={500} />
           </FadeIn>
           
           {/* Floating Stats Cards */}

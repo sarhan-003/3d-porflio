@@ -6,6 +6,31 @@ interface AnimatedTextProps {
   className?: string;
 }
 
+const AnimatedCharacter = ({ 
+  char, 
+  start, 
+  end, 
+  scrollYProgress 
+}: { 
+  char: string; 
+  start: number; 
+  end: number; 
+  scrollYProgress: any 
+}) => {
+  const opacity = useTransform(scrollYProgress, [start, end], [0.2, 1]);
+  return (
+    <span className="relative">
+      <span className="opacity-0">{char}</span>
+      <motion.span
+        className="absolute left-0 top-0 text-[#D7E2EA]"
+        style={{ opacity }}
+      >
+        {char}
+      </motion.span>
+    </span>
+  );
+};
+
 export const AnimatedText: React.FC<AnimatedTextProps> = ({ text, className = '' }) => {
   const containerRef = useRef<HTMLParagraphElement>(null);
   
@@ -19,7 +44,7 @@ export const AnimatedText: React.FC<AnimatedTextProps> = ({ text, className = ''
   let charCount = 0;
 
   return (
-    <p ref={containerRef} className={`flex flex-wrap justify-center ${className}`}>
+    <p ref={containerRef} className={`relative flex flex-wrap justify-center ${className}`}>
       {words.map((word, wordIndex) => (
         <span key={wordIndex} className="mr-[0.25em] flex">
           {word.split('').map((char, charIndex) => {
@@ -28,17 +53,13 @@ export const AnimatedText: React.FC<AnimatedTextProps> = ({ text, className = ''
             charCount++;
             
             return (
-              <span key={charIndex} className="relative">
-                <span className="opacity-0">{char}</span>
-                <motion.span
-                  className="absolute left-0 top-0 text-[#D7E2EA]"
-                  style={{
-                    opacity: useTransform(scrollYProgress, [start, end], [0.2, 1])
-                  }}
-                >
-                  {char}
-                </motion.span>
-              </span>
+              <AnimatedCharacter 
+                key={charIndex}
+                char={char}
+                start={start}
+                end={end}
+                scrollYProgress={scrollYProgress}
+              />
             );
           })}
         </span>

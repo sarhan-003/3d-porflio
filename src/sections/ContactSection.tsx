@@ -41,7 +41,7 @@ export const ContactSection: React.FC = () => {
                 <Mail className="w-6 h-6" />
                 <span className="font-medium text-lg">Email</span>
               </a>
-              <a href="#" className="flex items-center gap-4 text-[#E6F1FF]/70 hover:text-white transition-colors p-4 rounded-xl bg-white/5 border border-white/10 mt-2">
+              <a href="/Sarhan_Bakarman_Resume.pdf" download="Sarhan_Bakarman_Resume.pdf" className="flex items-center gap-4 text-[#E6F1FF]/70 hover:text-white transition-colors p-4 rounded-xl bg-white/5 border border-white/10 mt-2">
                 <FileText className="w-6 h-6" />
                 <span className="font-medium text-lg">Download Resume</span>
               </a>
